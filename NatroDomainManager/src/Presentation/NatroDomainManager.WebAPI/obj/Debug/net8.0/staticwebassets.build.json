@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "De595Mq6A+55oTmn4n8WITEdDMSPvrwA/zlxEfR2Ep4=",
+  "Source": "NatroDomainManager.WebAPI",
+  "BasePath": "_content/NatroDomainManager.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

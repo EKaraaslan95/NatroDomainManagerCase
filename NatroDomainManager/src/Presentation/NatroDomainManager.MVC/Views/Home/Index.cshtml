@@ -1,0 +1,123 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center">Domain Search</h1>
+    <!-- Arama Alanı ve Butonu -->
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="input-group">
+                <input type="text" id="domainName" class="form-control" placeholder="Enter domain name" aria-label="Domain name">
+                <button class="btn btn-primary" id="searchBtn">Search</button>
+            </div>
+        </div>
+    </div>
+    <div id="loader" style="display:none;">
+        <p>Loading...</p>
+    </div>
+    <!-- Sonuç Kartı -->
+    <div class="row mt-4" id="resultCard" style="display:none;">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    Domain Information
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title" style="color: red; display:none" id="domainId"></h3>
+                    <h3 class="card-title" style="color: red;" id="domainNameDisplay"></h3>
+                    <p class="card-text"><strong>IsAvailable:</strong> <span id="domainRegistered"></span></p>
+                    <p class="card-text"><strong>Create Date:</strong> <span id="createDate"></span></p>
+                    <p class="card-text"><strong>Update Date:</strong> <span id="updateDate"></span></p>
+                    <p class="card-text"><strong>Expiry Date:</strong> <span id="expiryDate"></span></p>
+                    <p class="card-text"><strong>Last Checked:</strong> <span id="lastCheckedDate"></span></p>
+
+                    <button id="addToFavorites" class="btn btn-primary" style="position: absolute; bottom: 20px; right: 20px;">
+                        Add To Favorites
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #resultCard {
+        position: relative; /* Kartın içinde pozisyonlama yapabilmek için */
+    }
+
+    #addToFavorites {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1;
+    }
+</style>
+
+<script>
+    document.getElementById('searchBtn').addEventListener('click', async function () {
+        const domainName = document.getElementById('domainName').value;
+
+        if (!domainName) {
+            alert("Please enter a domain name.");
+            return;
+        }
+
+        try {
+            document.getElementById('loader').style.display = 'block';
+            document.getElementById('resultCard').style.display = 'none'; // Sonuç kartını gizle
+
+            // API'ye istek atıyoruz
+            const response = await fetch('/Home/DomainSearch', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(domainName)
+            });
+
+            document.getElementById('loader').style.display = 'none';
+            if (response.ok) {
+                const data = await response.json();
+
+                // Kart içeriğini güncelleme
+                document.getElementById('domainId').innerText = data.data.domainId;
+                document.getElementById('domainNameDisplay').innerText = data.data.domainName;
+                document.getElementById('domainRegistered').innerText = data.data.domainRegistered;
+                document.getElementById('createDate').innerText = data.data.createDate;
+                document.getElementById('updateDate').innerText = data.data.updateDate;
+                document.getElementById('expiryDate').innerText = data.data.expiryDate;
+                document.getElementById('lastCheckedDate').innerText = data.data.lastCheckedDate ? new Date(data.data.lastCheckedDate).toLocaleString() : 'N/A';
+
+                // Kartı görünür hale getirme
+                document.getElementById('resultCard').style.display = 'block';
+            } else {
+                alert('Domain information not found.');
+            }
+        } catch (error) {
+            document.getElementById('loader').style.display = 'none';
+            console.error('Error fetching domain data:', error);
+            alert('Error occurred while fetching domain data.');
+        }
+    });
+
+
+    document.getElementById('addToFavorites').addEventListener('click', async function () {
+        const domainName = parseInt(document.getElementById('domainId').innerText)
+
+        const response = await fetch('/Favorite/AddFavorite', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(domainName)
+        });
+
+        // Favorilere ekleme işlemi
+        const data = await response.json();
+        alert(`${data.message}`);
+        // Gerçek favorilere ekleme işlemi buraya eklenebilir
+    });
+
+</script>
+

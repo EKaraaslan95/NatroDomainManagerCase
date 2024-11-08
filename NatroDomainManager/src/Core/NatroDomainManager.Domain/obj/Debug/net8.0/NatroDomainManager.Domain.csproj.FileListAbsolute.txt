@@ -1,0 +1,11 @@
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Domain\bin\Debug\net8.0\NatroDomainManager.Domain.deps.json
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Domain\bin\Debug\net8.0\NatroDomainManager.Domain.dll
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Domain\bin\Debug\net8.0\NatroDomainManager.Domain.pdb
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Domain\obj\Debug\net8.0\NatroDomainManager.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Domain\obj\Debug\net8.0\NatroDomainManager.Domain.AssemblyInfoInputs.cache
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Domain\obj\Debug\net8.0\NatroDomainManager.Domain.AssemblyInfo.cs
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Domain\obj\Debug\net8.0\NatroDomainManager.Domain.csproj.CoreCompileInputs.cache
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Domain\obj\Debug\net8.0\NatroDomainManager.Domain.dll
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Domain\obj\Debug\net8.0\refint\NatroDomainManager.Domain.dll
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Domain\obj\Debug\net8.0\NatroDomainManager.Domain.pdb
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Domain\obj\Debug\net8.0\ref\NatroDomainManager.Domain.dll

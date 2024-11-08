@@ -1,0 +1,252 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "Favorites";
+}
+<style>
+    .domain-card {
+        display: none;
+        margin-top: 20px;
+    }
+</style>
+<div class="container my-4">
+    <h2>Favorite Domain Names</h2>
+
+    <!-- List of favorite domains -->
+    <ul class="list-group" id="domainList">
+        <!-- Domains will be added dynamically here -->
+    </ul>
+
+    <!-- Domain Info Cards (Initially hidden) -->
+    <div id="domainCardsContainer">
+        <!-- Domain info cards will be added dynamically here -->
+    </div>
+
+</div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        getMyFavorites();
+    });
+
+
+
+    async function getMyFavorites() {
+        try {
+           
+
+            // Favoriler için POST isteği
+            const favoritesResponse = await fetch('/Favorite/MyFavorites', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!favoritesResponse.ok) {
+                throw new Error('Failed to fetch favorites.');
+            }
+
+            // Yanıttaki favori verileri alınıyor
+            const data = await favoritesResponse.json();
+            const response = data.data; 
+           // console.log("Favorites:", favorites);
+            createDomainListAndCards(response);
+            // Favori bilgilerini ekranda gösterebilir veya başka işlemler yapabilirsiniz
+        } catch (error) {
+            console.error("Error fetching favorites:", error);
+        }
+    }
+    // Sample response from your API
+    // const response = {
+    //     "data": [
+    //         {
+    //             "domainName": "natro.com",
+    //             "queryTime": null,
+    //             "domainRegistered": "False",
+    //             "createDate": null,
+    //             "updateDate": null,
+    //             "expiryDate": null,
+    //             "lastCheckedDate": "2024-11-06T19:20:12.0286173"
+    //         },
+    //         {
+    //             "domainName": "karaaslanemre.com",
+    //             "queryTime": null,
+    //             "domainRegistered": "True",
+    //             "createDate": null,
+    //             "updateDate": null,
+    //             "expiryDate": null,
+    //             "lastCheckedDate": "2024-11-08T02:43:27.4802391"
+    //         }
+    //     ],
+    //     "resultStatus": 0,
+    //     "message": "Liste Oluşturuldu",
+    //     "exception": null
+    // };
+
+    // Function to create a domain list and info cards
+    function createDomainListAndCards(data) {
+        const domainList = document.getElementById("domainList");
+        const domainCardsContainer = document.getElementById("domainCardsContainer");
+
+        data.forEach(domain => {
+            // Create list item for each domain
+            const listItem = document.createElement("li");
+            listItem.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+
+            const domainText = document.createElement("span");
+            domainText.textContent = domain.domainName;
+            listItem.appendChild(domainText);
+
+            const showInfoButton = document.createElement("button");
+            showInfoButton.classList.add("btn", "btn-primary", "btn-sm");
+            showInfoButton.textContent = "Show Info";
+            showInfoButton.onclick = () => showDomainCard(domain.domainName);
+            listItem.appendChild(showInfoButton);
+
+            domainList.appendChild(listItem);
+
+
+          
+
+
+            // Create domain info card
+            const domainCard = document.createElement("div");
+            domainCard.id = "domainCard_" + domain.domainName.replace(/\./g, '_').replace(/-/g, '_');
+            domainCard.classList.add("domain-card");
+
+            const card = document.createElement("div");
+            card.classList.add("card");
+            domainCard.appendChild(card);
+
+            const cardBody = document.createElement("div");
+            cardBody.classList.add("card-body");
+            card.appendChild(cardBody);
+
+            const cardTitle = document.createElement("h3");
+            cardTitle.classList.add("card-title");
+            cardTitle.textContent = domain.domainName;
+            cardTitle.style.color = "red"; // Kırmızı renk veriliyor
+            cardBody.appendChild(cardTitle);
+
+            const cardText = document.createElement("p");
+            cardText.classList.add("card-text");
+            cardText.textContent = "General Information for " + domain.domainName + "...";
+            cardBody.appendChild(cardText);
+
+            // const creationDate = document.createElement("p");
+            // creationDate.innerHTML = `<strong>Creation Date:</strong> ${domain.createDate || 'N/A'}`;
+            // cardBody.appendChild(creationDate);
+
+            const expiryDate = document.createElement("p");
+            cardText.classList.add("expiryDate");
+            expiryDate.innerHTML = `<strong>Expiration Date:</strong> ${domain.expiryDate || 'N/A'}`;
+            cardBody.appendChild(expiryDate);
+
+            const registeredStatus = document.createElement("p");
+            cardText.classList.add("domainRegistered");
+            registeredStatus.innerHTML = `<strong>Is Available:</strong> ${domain.domainRegistered}`;
+            cardBody.appendChild(registeredStatus);
+
+            const lastChecked = document.createElement("p");
+            cardText.classList.add("lastCheckedDate");
+            lastChecked.innerHTML = `<strong>Last Checked:</strong> ${domain.lastCheckedDate}`;
+            cardBody.appendChild(lastChecked);
+
+            const refreshButton = document.createElement("button");
+            refreshButton.classList.add("btn", "btn-warning");
+            refreshButton.textContent = "Refresh";
+            refreshButton.onclick = () => refreshDomainInfo(refreshButton, domain.domainName);
+            cardBody.appendChild(refreshButton);
+
+            const removeButton = document.createElement("button");
+            removeButton.classList.add("btn", "btn-danger");
+            removeButton.textContent = "Remove from Favorites";
+            removeButton.onclick = async () => {
+                await removeFromFavorites(domain.favoriteId);
+            };
+            cardBody.appendChild(removeButton);
+
+            domainCardsContainer.appendChild(domainCard);
+        });
+    }
+
+    // Function to show the domain info card
+    function showDomainCard(domainName) {
+        const cardId = 'domainCard_' + domainName.replace(/\./g, '_').replace(/-/g, '_');
+        const card = document.getElementById(cardId);
+
+        // Hide all domain cards first
+        const allCards = document.querySelectorAll('.domain-card');
+        allCards.forEach(card => card.style.display = 'none');
+
+        // Show the selected domain card
+        card.style.display = 'block';
+    }
+
+    // Function to simulate refreshing domain info
+    async function refreshDomainInfo(button, domainName) {
+        try {
+         
+
+            // API'ye istek atıyoruz
+            const response = await fetch('/Home/DomainSearch', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(domainName)
+            });
+
+          
+            if (response.ok) {
+                const data = await response.json();
+
+                // Butonun en yakın cardBody veya row elementini bul
+                const cardBody = button.closest('.card-body'); // veya en yakın `.row` veya başka kapsayıcı
+
+                if (cardBody) {
+                    // Bu cardBody içindeki güncellenecek elementleri seçip güncelle
+                    cardBody.querySelector('.card-title').textContent = data.data.domainName;
+                    cardBody.querySelector('.card-text').textContent = "Updated";
+                    cardBody.querySelector('.domainRegistered').textContent = data.data.domainRegistered ? "Yes" : "No";
+                    cardBody.querySelector('.expiryDate').textContent = data.data.expiryDate || "N/A";
+                    cardBody.querySelector('.lastCheckedDate').textContent = data.data.lastCheckedDate ? new Date(data.lastCheckedDate).toLocaleString() : "N/A";
+                }
+            } else {
+                alert('Failed to refresh domain info.');
+            }
+        } catch (error) {
+            document.getElementById('loader').style.display = 'none';
+            console.error('Error fetching domain data:', error);
+            alert('Error occurred while fetching domain data.');
+        }
+    }
+
+    async function removeFromFavorites(favoriteId) {
+        try {
+            const response = await fetch('/Favorite/FavoriteInActive', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ favoriteId }) // favoriteId'yi JSON olarak gönder
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                alert(`${data.message}`); // Başarı mesajını göster
+                location.reload();
+
+            } else {
+                alert('Failed to remove from favorites.');
+            }
+        } catch (error) {
+            console.error('Error removing from favorites:', error);
+            alert('An error occurred while removing from favorites.');
+        }
+    }
+</script>

@@ -1,0 +1,15 @@
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Application\bin\Debug\net8.0\NatroDomainManager.Application.deps.json
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Application\bin\Debug\net8.0\NatroDomainManager.Application.dll
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Application\bin\Debug\net8.0\NatroDomainManager.Application.pdb
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Application\bin\Debug\net8.0\NatroDomainManager.Domain.dll
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Application\bin\Debug\net8.0\NatroDomainManager.Domain.pdb
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Application\obj\Debug\net8.0\NatroDomainManager.Application.csproj.AssemblyReference.cache
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Application\obj\Debug\net8.0\NatroDomainManager.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Application\obj\Debug\net8.0\NatroDomainManager.Application.AssemblyInfoInputs.cache
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Application\obj\Debug\net8.0\NatroDomainManager.Application.AssemblyInfo.cs
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Application\obj\Debug\net8.0\NatroDomainManager.Application.csproj.CoreCompileInputs.cache
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Application\obj\Debug\net8.0\NatroDom.2CE14FD7.Up2Date
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Application\obj\Debug\net8.0\NatroDomainManager.Application.dll
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Application\obj\Debug\net8.0\refint\NatroDomainManager.Application.dll
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Application\obj\Debug\net8.0\NatroDomainManager.Application.pdb
+C:\Users\PC\Documents\ElasticSearch\UdemyElasticsearchWithNet-lessons-docker-compose\API\NatroDomainManager\src\Core\NatroDomainManager.Application\obj\Debug\net8.0\ref\NatroDomainManager.Application.dll

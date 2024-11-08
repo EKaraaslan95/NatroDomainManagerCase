@@ -1,0 +1,107 @@
+[
+  {
+    "ContainingType": "NatroDomainManager.WebAPI.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "NatroDomainManager.Application.Dto.LoginModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NatroDomainManager.WebAPI.Controllers.DomainController",
+    "Method": "AddFavorite",
+    "RelativePath": "api/Domain/add-favorite/{domainId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "domainId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NatroDomainManager.WebAPI.Controllers.DomainController",
+    "Method": "GetSecureData",
+    "RelativePath": "api/Domain/data",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NatroDomainManager.WebAPI.Controllers.DomainController",
+    "Method": "InActiveFavorite",
+    "RelativePath": "api/Domain/inactive-favorite/{favoriteId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "favoriteId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NatroDomainManager.WebAPI.Controllers.DomainController",
+    "Method": "MyFavorites",
+    "RelativePath": "api/Domain/my-favorites",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NatroDomainManager.WebAPI.Controllers.DomainController",
+    "Method": "NameControl",
+    "RelativePath": "api/Domain/name-control/{name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NatroDomainManager.WebAPI.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[NatroDomainManager.WebAPI.WeatherForecast, NatroDomainManager.WebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]
